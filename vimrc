@@ -1,5 +1,13 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+"-----------------------------------------------
+let g:mapleader = "\<space>"
+nnoremap <silent><leader>q :quit<cr>
+nnoremap <silent><leader>w :write<cr>
+
+"-----------------------------------------------
+"Vundle set up
+"-----------------------------------------------
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,6 +30,7 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'Shougo/denite.nvim'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -37,6 +46,30 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+" ------------------------------------------------------
+"  Denite
+"  ----------------------------------------------------
+nnoremap <silent><leader>uu               :Denite -buffer-name=file_rec
+    \ file_rec<cr>
+nnoremap <silent><leader>um               :Denite -buffer-name=models
+    \ -path=`getcwd()`/app/models
+    \ file_rec<cr>
+nnoremap <silent><leader>uc               :Denite -buffer-name=controllers
+  \ -path=`getcwd()`/app/controllers
+  \ file_rec<cr>
+nnoremap <silent><leader>uv               :Denite -buffer-name=views
+  \ -path=`getcwd()`/app/views
+  \ file_rec<cr>
+nnoremap <silent><leader>uj               :Denite -buffer-name=javascripts
+  \ -path=`getcwd()`/app/assets/javascripts
+  \ file_rec<cr>
+nnoremap <silent><leader>us               :Denite -buffer-name=specs
+  \ -path=`getcwd()`/spec
+  \ file_rec<cr>
+nnoremap <silent><leader>ub               :Denite -buffer-name=buffers
+  \ buffer<cr
+
+"------------------------------------------------------------------
 let g:airline_theme='one'
 let g:airline_powerline_fonts=1
 syntax on
