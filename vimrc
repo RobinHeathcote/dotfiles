@@ -4,7 +4,11 @@ filetype off                  " required
 let g:mapleader = "\<space>"
 nnoremap <silent><leader>q :quit<cr>
 nnoremap <silent><leader>w :write<cr>
-
+" toggle highlight search
+nnoremap <silent><leader>h :set hlsearch!<cr>
+" split panes
+nnoremap <leader>\ :vsplit<cr>
+nnoremap <leader>- :split<cr>
 "-----------------------------------------------
 "Vundle set up
 "-----------------------------------------------
@@ -29,8 +33,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-endwise'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'Townk/vim-autoclose'
 Plugin 'Shougo/denite.nvim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -73,7 +79,6 @@ nnoremap <silent><leader>ub               :Denite -buffer-name=buffers
 let g:airline_theme='one'
 let g:airline_powerline_fonts=1
 syntax on
-inoremap jj <esc>
 set termguicolors
 set background=dark " for the dark version
 colorscheme one
@@ -87,9 +92,10 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 set number
 set relativenumber
-set hls
+set hlsearch
 set incsearch
-
+set backspace=2
+set tabstop=2 shiftwidth=2 shiftround expandtab
 " Enable mouse if available
  if has("mouse")
    set mouse=a
@@ -97,3 +103,18 @@ set incsearch
 
 set laststatus=2
 set listchars=tab:>#,nbsp:_
+" font
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h14
+
+inoremap jj <esc>
+
+inoremap <left> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <right> <nop>
+
+nnoremap <left> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <right> <nop>
+
