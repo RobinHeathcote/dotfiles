@@ -106,6 +106,11 @@ set listchars=tab:>#,nbsp:_
 " font
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h14
 
+" Highlight column when over 80 characters
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('Error', '\%121v', 100)
+
 inoremap jj <esc>
 
 inoremap <left> <nop>
