@@ -37,6 +37,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'Shougo/denite.nvim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'rizzatti/dash.vim'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -92,6 +93,8 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 set number
 set relativenumber
+set nowrap
+set winwidth=84
 set hlsearch
 set incsearch
 set backspace=2
@@ -107,8 +110,8 @@ set listchars=tab:>#,nbsp:_
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h14
 
 " Highlight column when over 80 characters
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+highlight CharacterLimit ctermbg=magenta
+call matchadd('CharacterLimit', '\%81v', 100)
 call matchadd('Error', '\%121v', 100)
 
 inoremap jj <esc>
