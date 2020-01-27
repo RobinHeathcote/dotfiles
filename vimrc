@@ -9,6 +9,7 @@ nnoremap <silent><leader>h :set hlsearch!<cr>
 " split panes
 nnoremap <leader>\ :vsplit<cr>
 nnoremap <leader>- :split<cr>
+nnoremap <leader>e :Explore<cr>
 "-----------------------------------------------
 "Vundle set up
 "-----------------------------------------------
@@ -41,9 +42,7 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'ervandew/supertab'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'prettier/vim-prettier'
 Plugin 'w0rp/ale'
 Plugin 'mattn/emmet-vim'
@@ -72,6 +71,7 @@ filetype plugin indent on    " required
   map <Leader>n :NERDTreeToggle<CR>
 "  Denite
 "  ----------------------------------------------------
+
 nnoremap <silent><leader>uu               :Denite -buffer-name=file_rec
     \ file_rec<cr>
 nnoremap <silent><leader>um               :Denite -buffer-name=models
@@ -92,19 +92,6 @@ nnoremap <silent><leader>us               :Denite -buffer-name=specs
 nnoremap <silent><leader>ub               :Denite -buffer-name=buffers
   \ buffer<cr>
 
-call denite#custom#option('_', {
-      \ 'highlight_matched_char': 'DiffDelete',
-      \ 'highlight_matched_range': 'Statement',
-      \ 'highlight_mode_insert': 'DiffAdd',
-      \ 'highlight_mode_normal': 'DiffText',
-      \ })
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-      \ ['.git/', '.node_modules'])
-
-call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '--hidden', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command',
-        \ ['rg', '--hidden', '--threads', '1'])
 "------------------------------------------------------------------
 let g:airline_theme='one'
 let g:airline_powerline_fonts=1
@@ -113,15 +100,6 @@ set termguicolors
 set background=dark " for the dark version
 colorscheme one
 
-"vim-rspec
-let g:rspec_runner = "os_x_iterm2"
-let g:rspec_command = "!docker-compose exec app bin/rspec {spec}"
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
-"----------------------------------------------------------
 "Vim-prettier
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
@@ -230,7 +208,7 @@ set backspace=2
 set tabstop=2 shiftwidth=2 shiftround expandtab
 set nobackup                 " disable backups
 set nowritebackup            " disable backups
-"set noswapfile              " disable swapfiles
+set noswapfile              " disable swapfiles
 set directory=~/.vim/swap    " location of swapfiles
 " Enable mouse if available
  if has("mouse")
@@ -248,16 +226,6 @@ call matchadd('CharacterLimit', '\%81v', 100)
 call matchadd('Error', '\%121v', 100)
 
 inoremap jj <esc>
-
-inoremap <left> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <right> <nop>
-
-nnoremap <left> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <right> <nop>
 
 " Easier window navigation
 nnoremap <C-J> <C-W><C-J>
